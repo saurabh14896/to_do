@@ -16,23 +16,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Divider from '@material-ui/core/Divider';
 import InputLabel from '@material-ui/core/InputLabel';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-    },
-  }
-}))
 
 function Assignment() {
-  const classes = useStyles();
   const [name,setName] = useState(null);
   const [inputs, setInputs] = useState([]);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Inputs", inputs);
-  };
-
+ 
   const handleChangeInput = (index, event) => {
     const values =[...inputs];
     values[index][event.target.name]=event.target.value;
@@ -59,9 +47,8 @@ function Assignment() {
   return (
     <Container style={{marginTop:50}}>
       <Typography variant="h5" align="center"><b>Add Item</b></Typography>
-        <Divider style={{paddingTop: 2,paddingBottom: 2,background:'#000000',}}/>
-      <form className={classes.root} onSubmit={handleSubmit}>
-        
+        <Divider style={{paddingTop: 2,marginBottom: 20,paddingBottom: 2,background:'#000000',}}/>
+      <form>
             <Grid spacing={1} container justify="center">
                 <Grid item md={11} xs={10}>
                     <TextField
@@ -74,7 +61,7 @@ function Assignment() {
                 </Grid>
                 <Grid item md={1} xs={1}>
                     <IconButton
-                        style={{marginTop:5}}
+                        
                         onClick={handleAddFields}
                         >
                     <AddIcon fontSize="large" style={{color:'#000000'}}/>
@@ -173,13 +160,6 @@ function Assignment() {
         </Grid>:null}
           </div>
         )) }
-        {/*<Button
-          className={classes.button}
-          variant="contained" 
-          color="primary" 
-          type="submit" 
-          onClick={handleSubmit}
-        >Send</Button>*/}
       </form>
     </Container>
   );
